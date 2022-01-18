@@ -27,13 +27,17 @@ parts:
       tar -xf php.tar.xz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php/
 
       # Downloading external extensions
-      declare -a extensions=("imagick" "redis")
+      declare -a extensions=("imagick")
       for ext in "${extensions[@]}"
       do
         wget -qO $ext.tgz https://pecl.php.net/get/$ext
         mkdir $SNAPCRAFT_PROJECT_DIR/php/ext/$ext
         tar -zxf $ext.tgz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php/ext/$ext/
       done
+
+      wget -qO phpredis.tgz https://pecl.php.net/get/redis
+      mkdir $SNAPCRAFT_PROJECT_DIR/php/ext/phpredis
+      tar -zxf phpredis.tgz --strip-components=1 -C $SNAPCRAFT_PROJECT_DIR/php/ext/phpredis/
 
       # Deleting configure script for extensions to be compiled also
       cd $SNAPCRAFT_PROJECT_DIR/php/
@@ -88,4 +92,4 @@ parts:
       - --with-zlib
       - --enable-soap
       - --with-imagick=shared
-      - --with-redis=shared
+      - --with-phpredis=shared
