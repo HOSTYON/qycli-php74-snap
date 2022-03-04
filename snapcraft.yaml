@@ -1,8 +1,10 @@
 name: qycli-php74
 base: core20
 adopt-info: qycli-php74
-summary: PHP 7.4 for qycli
-description: "PHP for the qycli LEMP stack"
+summary: PHP 7.4 for the qycli LEMP stack - qycli.org
+description: |
+Compiled PHP binaries carrier for the qycli LEMP stack.
+This product includes PHP software, freely available from http://www.php.net/software/
 
 grade: stable
 confinement: strict
