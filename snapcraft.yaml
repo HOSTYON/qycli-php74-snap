@@ -3,7 +3,7 @@ base: core20
 adopt-info: qycli-php74
 summary: PHP 7.4 for the qycli LEMP stack - qycli.org
 description: |
-  Compiled PHP binaries carrier for the qycli LEMP stack.
+  Compiled PHP binaries carrier for qycli.
   This product includes PHP software, freely available from http://www.php.net/software/
 
 grade: stable
@@ -17,7 +17,7 @@ parts:
     plugin: autotools
     override-pull: |
       php_major_version=7.4
-      php_version=$(curl -s https://www.php.net/downloads.php | tac | tac | grep "<h3 id=\"v$php_major_version.*" | tr -d '<h3 id="vclassttle>')
+      php_version=$(curl -s https://www.php.net/downloads.php | tac | tac | grep "<h3 id=\"v$php_major_version.*" | grep -o -P '(?<="v).*(?=" class)')
 
       snapcraftctl set-version "${php_version}"
 
